@@ -1,0 +1,3 @@
+[submodule "nfc-reader"]
+	path = nfc-reader
+	url = git@github.com:tobiasquinn/nfc-reader.git
