@@ -27,9 +27,20 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 from sys import stdin, exc_info
 from time import sleep
 import rfidiot
+import urllib2, urllib
 
 from smartcard.CardMonitoring import CardMonitor, CardObserver
 from smartcard.util import *
+
+METEOR_ROOT = "http://localhost:3000"
+URL_NFC_INSERT  = METEOR_ROOT + "/nfcinsert"
+URL_NFC_REMOVED = METEOR_ROOT + "/nfcremoved"
+
+def URLRequest(url, params, method="GET"):
+    if method == "POST":
+        return urllib2.Request(url, data=urllib.urlencode(params))
+    else:
+        return urllib2.Request(url, + "?" + urllib.urlencode(params))
 
 ireader = rfidiot.card
 # a simple card observer that prints inserted/removed cards
@@ -45,8 +56,14 @@ class printobserver(CardObserver):
             # now read an ID
             ireader.select()
             print "ID: " + ireader.uid
+            # and do a presence post to our meteor server
+            URL = URL_NFC_INSERT + '/' + ireader.uid
+            result = urllib2.urlopen(URLRequest(URL, {}, method="POST")).read()
+            print "URLREQ:", URL, result
         for card in removedcards:
             print "-Removed: ", toHexString(card.atr)
+            result = urllib2.urlopen(URLRequest(URL_NFC_REMOVED, {}, method="POST")).read()
+            print "URLREQ:", URL_NFC_REMOVED, result
 
 try:
     print "Insert or remove a smartcard in the system."
