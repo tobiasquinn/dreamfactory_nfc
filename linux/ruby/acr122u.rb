@@ -9,6 +9,11 @@
 #
 
 require 'smartcard'
+require 'net/http'
+
+meteor_root = 'http://localhost:3000'
+url_nfc_insert  = meteor_root + '/nfcinsert'
+url_nfc_removed = meteor_root + '/nfcremoved'
 
 context = Smartcard::PCSC::Context.new
 reader = context.readers.first   # Assuming only one reader attached
@@ -50,21 +55,28 @@ loop do
     # Ask card for UID in APDU format (Section 5.1)
     response = card.transmit("\xFF\xCA\x00\x00\x04").unpack('C*')
 
-    # Beep and change LED to orange to signal user we've read the tag.
-    # (Section 6.2)
-    # Green result
-    #card.transmit "\xFF\x00\x40\xCE\x04\x03\x00\x01\x01" rescue nil
-    # Red result
-    card.transmit "\xFF\x00\x40\xCD\x04\x03\x00\x01\x01" rescue nil
-
     # Check last two bytes for success code
     if response.last(2) == [0x90, 00]
       # Nice hex string
       uid = response[0..-3].pack('C*').unpack('H*').first
       puts "TAG: #{uid}"
+      # call our rest server and get prescence information
+      resp = Net::HTTP.get_response(URI.parse(url_nfc_insert + '/' + uid))
+      # Beep and change LED to orange to signal user we've read the tag.
+      # (Section 6.2)
+      if resp.body == "PRESENT"
+          puts "PRESENT"
+          # Green result
+          card.transmit "\xFF\x00\x40\xCE\x04\x03\x00\x01\x01" rescue nil
+      else
+          puts "ABSENT"
+          # Red result
+          card.transmit "\xFF\x00\x40\xCD\x04\x03\x00\x01\x01" rescue nil
+      end 
     else
       puts 'ERROR: tag error when reading UID'
     end
+
   rescue Smartcard::PCSC::Exception => ex
     puts "ERROR: #{ex.pcsc_status}"
   end

@@ -8,8 +8,10 @@ Meteor.Router.add({
         console.log("ID ", id);
         if (NFC.find({nfcid: id}).count() === 0) {
             NFC.insert({nfcid: id});
+            return "PRESENT";
         } else {
             NFC.remove({nfcid: id});
+            return "ABSENT";
         }
     },
     '/nfcremoved': function() {
