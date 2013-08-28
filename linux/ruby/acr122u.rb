@@ -52,7 +52,10 @@ loop do
 
     # Beep and change LED to orange to signal user we've read the tag.
     # (Section 6.2)
-    card.transmit "\xFF\x00\x40\xCF\x04\x03\x00\x01\x01" rescue nil
+    # Green result
+    #card.transmit "\xFF\x00\x40\xCE\x04\x03\x00\x01\x01" rescue nil
+    # Red result
+    card.transmit "\xFF\x00\x40\xCD\x04\x03\x00\x01\x01" rescue nil
 
     # Check last two bytes for success code
     if response.last(2) == [0x90, 00]
