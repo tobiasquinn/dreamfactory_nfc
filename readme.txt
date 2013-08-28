@@ -11,6 +11,6 @@ Needs usb permissions file - place linux/configfiles/42-pn53x.rules in /etc/udev
 
 Project Components
 
-linux/checkin - linux nfc checkin for updates to nfcserver
+linux/checkin - linux nfc checkin for updates to nfcserver (IGNORE - NOT WORKING)
 nfcserver    - server for incoming NFC reads and database updates 
-
+linux/ruby - working interface that controls LEDs on insert - NOTE: on archlinux blacklist modules and pcsc_scan is required to kick pcscd into life
