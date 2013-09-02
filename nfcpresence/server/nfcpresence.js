@@ -1,4 +1,5 @@
 NFC = new Meteor.Collection("nfc");
+MATRIX = new Meteor.Collection("matrix");
 
 NFC.remove({});
 
