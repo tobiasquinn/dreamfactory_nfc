@@ -1,8 +1,19 @@
 <template name="matrix">
-<h1>Edit matrix</h1>
+<h1>Presence Matrix</h1>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Profile</th>
+        <th>Needed</th>
+        <th>Offered</th>
+    </tr>
+    <tr>
 {{#each user}}
-<ul>
-    <li>{{user.name}}</li>
-</ul>
+        <td>{{name}}</td>
+        <td>{{profile}}</td>
+        <td>{{helpneeded}}</td>
+        <td>{{helpoffered}}</td>
 {{/each}}
+    </tr>
+</table>
 </template>
