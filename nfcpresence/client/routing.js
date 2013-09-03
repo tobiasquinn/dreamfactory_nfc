@@ -1,6 +1,6 @@
 Meteor.Router.add({
     '/': 'home',
-    '/register': 'register',
-    '/nfcids': 'nfcids',
-    '/matrix': 'matrix'
+    '/nfcpresent': 'nfcpresent',
+    '/matrix': 'matrix',
+    '/nfcdebug': 'nfcdebug'
 });
