@@ -4,16 +4,18 @@
     <table class="table">
         <tr>
             <th>Name</th>
-            <th>Profile</th>
-            <th>Needed</th>
-            <th>Offered</th>
+            <th>Social Profile</th>
+            <th>Current Occupation</th>
+            <th>Needs</th>
+            <th>Can Offer</th>
         </tr>
         {{#each entry}}
         <tr>
             <td>{{name}}</td>
-            <td>{{profile}}</td>
-            <td>{{_cokwr}}</td>
-            <td>{{_cpzh4}}</td>
+            <td>{{socialprofile}}</td>
+            <td>{{currentoccupation}}</td>
+            <td>{{needs}}</td>
+            <td>{{canoffer}}</td>
         </tr>
         {{/each}}
     </table>

@@ -1,7 +1,7 @@
 /* This should have some awesome to talk to a remote URL */
 "use strict";
 
-var spreadsheet_key = "https://docs.google.com/spreadsheet/pub?key=0AllzUkNYHhLKdFZwaXctTkVGNi03a2s4TWxHZlNWSlE&single=true&gid=2&output=html"
+var spreadsheet_key = "https://docs.google.com/spreadsheet/pub?key=0Ao86AsMqPMUhdDBmMTN6RjFwWXBsN3ZhQ3hpSy1xVnc&single=true&gid=0&output=html"
 //var sitename = "timetable.thewildschool.co.uk";
 //var sitepass = "munchkins";
 /* But for now we are localhost only */
