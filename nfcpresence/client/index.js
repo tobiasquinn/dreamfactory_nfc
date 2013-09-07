@@ -11,3 +11,9 @@
 //        console.log("nfc register");
 //    },
 //};
+
+//Template.nav.events({
+//    'click a[data-toggle="nav"]': function(e) {
+//        console.log("nav", e);
+//    },
+//});
