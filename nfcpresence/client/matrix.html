@@ -1,19 +1,21 @@
 <template name="matrix">
 <h1>Presence Matrix</h1>
-<table class="table">
-    <tr>
-        <th>Name</th>
-        <th>Profile</th>
-        <th>Needed</th>
-        <th>Offered</th>
-    </tr>
-{{#each entry}}
-    <tr>
-        <td>{{name}}</td>
-        <td>{{profile}}</td>
-        <td>{{_cokwr}}</td>
-        <td>{{_cpzh4}}</td>
-    </tr>
-{{/each}}
-</table>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Profile</th>
+            <th>Needed</th>
+            <th>Offered</th>
+        </tr>
+        {{#each entry}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{profile}}</td>
+            <td>{{_cokwr}}</td>
+            <td>{{_cpzh4}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
 </template>
