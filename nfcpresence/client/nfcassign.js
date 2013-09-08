@@ -28,3 +28,9 @@ Template.nfcassign.nfcid = function() {
     if (toassign !== undefined) return toassign.nfcid;
     else return "Unknown";
 }
+
+Template.nfcassign.events = {
+    'click .assignnfc': function(evt) {
+        console.log($(evt.target).html());
+    },
+};

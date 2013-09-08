@@ -4,10 +4,14 @@
 
 <h2>ID: {{nfcid}}</h2>
 
-<ul>
+<div class="row">
+<div class="col-md-6">
+<ul class="list-unstyled">
 {{#each unassignedUsers}}
-<li>{{name}}</li>
+<li><button type="button" class="assignnfc btn btn-block">{{name}}</button></li>
+<br>
 {{/each}}
 </ul>
+</div>
 </div>
 </template>
