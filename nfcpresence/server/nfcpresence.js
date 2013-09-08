@@ -5,6 +5,13 @@ NFCMAP = new Meteor.Collection('nfcmap');
 NFC.remove({});
 //NFCMAP.remove({});
 
+// allow client to remove all needassigning records from map
+Meteor.methods({
+    nfcremoveneedsassigning: function() {
+        NFCMAP.remove({needsassigning: true});
+    },
+});
+
 Meteor.Router.add({
     '/nfcinsert/:id': function(id) {
         console.log("NFC PRESENT");

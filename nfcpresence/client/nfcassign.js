@@ -31,6 +31,12 @@ Template.nfcassign.nfcid = function() {
 
 Template.nfcassign.events = {
     'click .assignnfc': function(evt) {
-        console.log($(evt.target).html());
+        var rowNum = evt.target.value;
+        console.log("Assign to row", rowNum);
+        var row = MATRIX.findOne({rowNumber: parseInt(rowNum)});
+        // insert into map and remove needsassigning records
+        Meteor.call('nfcremoveneedsassigning');
+        // return to nfcpresent matrix
+        Meteor.Router.to('nfcpresent');
     },
 };
