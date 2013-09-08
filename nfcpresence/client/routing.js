@@ -13,5 +13,5 @@ Meteor.Router.add({
         Session.set('namedetail', name);
         return 'namedetail'
     },
-    '/nfcdebug': 'nfcdebug'
+    '/nfcassign': 'nfcassign'
 });
