@@ -7,3 +7,6 @@ standard-app-packages
 autopublish
 preserve-inputs
 router
+accounts-base
+accounts-password
+accounts-ui
