@@ -13,7 +13,7 @@ var nfcmapobserver = NFCMAP.find({needsassigning: true}).observe({
 Template.nfcassign.unassignedUsers = function() {
     var rows = NFCMAP.find({}).fetch();
     var filteredRows = _.filter(rows, function(row) {
-        if ((row.assigned === undefined) && (row.needsassigning != true)) {
+        if ((row.nfcid === undefined) && (row.needsassigning != true)) {
             return true;
         } else {
             return false;
@@ -34,9 +34,10 @@ Template.nfcassign.needsassigning = function() {
 Template.nfcassign.events = {
     'click .assignnfc': function(evt) {
         var rowNum = evt.target.value;
-        console.log("Assign to row", rowNum);
+        console.log("Assign to row", rowNum, Template.nfcassign.needsassigning().nfcid);
         var row = MATRIX.findOne({rowNumber: parseInt(rowNum)});
         // insert into map and remove needsassigning records
+        Meteor.call('mapnfcidtorow', parseInt(rowNum), row.name, Template.nfcassign.needsassigning().nfcid);
         Meteor.call('nfcremoveneedsassigning');
         // return to nfcpresent matrix
         Meteor.Router.to('nfcpresent');

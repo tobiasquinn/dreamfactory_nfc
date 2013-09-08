@@ -14,6 +14,9 @@ Meteor.methods({
             NFCMAP.remove({needsassigning: true});
         }
     },
+    mapnfcidtorow: function(rownumber, name, nfcid) {
+        NFCMAP.update({rowNumber: rownumber}, {$set: {name: name, nfcid: nfcid}});
+    },
 });
 
 Meteor.Router.add({
