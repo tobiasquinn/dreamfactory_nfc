@@ -13,5 +13,8 @@ Meteor.Router.add({
         Session.set('namedetail', name);
         return 'namedetail'
     },
-    '/nfcassign': 'nfcassign'
+    '/nfcassign/:nfcid': function(nfcid) {
+        Session.set('nfcassignid', nfcid);
+        return 'nfcassign'
+    },
 });

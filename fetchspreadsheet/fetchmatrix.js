@@ -54,6 +54,7 @@ var processSheets = function(url) {
         function spreadsheetLoaded(data) {
             console.log("HERE", data);
             var collection = db.collection('matrix');
+            var nfcmap = db.collection('nfcmap');
             // remove all existing elements
             collection.remove({}, function(err, removed){});
             console.log("REMOVED ALL");
@@ -62,6 +63,10 @@ var processSheets = function(url) {
             _.each(data, function(row, index) {
                 console.log(row, index);
                 collection.insert(row, {safe: true}, function(err, docs) {
+                    if (err) throw err;
+                });
+                // for the nfc we insert the rowNumber
+                nfcmap.update({rowNumber: row.rowNumber}, {rowNumber: row.rowNumber}, {upsert: true}, function(err, docs) {
                     if (err) throw err;
                 });
             });
