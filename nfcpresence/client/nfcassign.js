@@ -34,7 +34,6 @@ Template.nfcassign.needsassigning = function() {
 Template.nfcassign.events = {
     'click .assignnfc': function(evt) {
         var rowNum = evt.target.value;
-        console.log("Assign to row", rowNum, Template.nfcassign.needsassigning().nfcid);
         var row = MATRIX.findOne({rowNumber: parseInt(rowNum)});
         // insert into map and remove needsassigning records
         Meteor.call('mapnfcidtorow', parseInt(rowNum), row.name, Template.nfcassign.needsassigning().nfcid);

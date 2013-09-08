@@ -1,10 +1,19 @@
 <template name="nfcpresent">
 <div class="container">
-  <h1>NFC Cards Present</h1>
-  <ul>
-  {{#each nfc_present}}
-  <li>{{nfcid}}</li>
-  {{/each}}
-  </ul>
+    {{#if nfc_present.length}}
+    <h1>{{nfc_present.length}} NFC Cards present</h1>
+    {{#each nfc_present}}
+    {{> nfcpresentdetail}}
+    {{/each}}
+    {{else}}
+    <h1>No NFC Cards Present</h1>
+    {{/if}}
 </div>
+</template>
+
+<template name="nfcpresentdetail">
+<blockquote>
+    <h2><a href="/matrix/name/{{name}}">{{name}}</a></h2>
+    <h3><a href="{{socialprofile}}">{{socialprofile}}</a></h3>
+</blockquote>
 </template>
