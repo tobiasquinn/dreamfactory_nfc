@@ -9,5 +9,9 @@ Meteor.Router.add({
     '/': 'home',
     '/nfcpresent': 'nfcpresent',
     '/matrix': 'matrix',
+    '/matrix/name/:name': function(name) {
+        Session.set('namedetail', name);
+        return 'namedetail'
+    },
     '/nfcdebug': 'nfcdebug'
 });
