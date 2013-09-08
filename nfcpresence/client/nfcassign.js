@@ -8,8 +8,19 @@ var nfcmapobserver = NFCMAP.find({needsassigning: true}).observe({
 });
 
 Template.nfcassign.unassignedUsers = function() {
-//    var unassignedUsers
-    return NFCMAP.find({assignedto: false});
+    var rows = NFCMAP.find({}).fetch();
+    var filteredRows = _.filter(rows, function(row) {
+        if ((row.assigned === undefined) && (row.needsassigning != true)) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    var intRows = _.map(filteredRows, function(row) {
+        return parseInt(row.rowNumber);
+    });
+    var info = MATRIX.find({rowNumber: {$in: intRows}}, {sort: {name: 1}});
+    return info;
 }
 
 Template.nfcassign.nfcid = function() {
