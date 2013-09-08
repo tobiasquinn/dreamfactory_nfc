@@ -6,6 +6,13 @@ NFC.remove({});
 // remove all to be assigned on startup
 NFCMAP.remove({needsassigning: true});
 
+// allow app to remove nfc id mappings
+NFCMAP.allow({
+    remove: function(userId, doc) {
+        return true;
+    },
+});
+
 // allow client to remove all needassigning records from map
 Meteor.methods({
     nfcremoveneedsassigning: function() {
