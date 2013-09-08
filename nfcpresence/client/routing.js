@@ -14,4 +14,5 @@ Meteor.Router.add({
         return 'namedetail'
     },
     '/nfcassign': 'nfcassign',
+    '/nfcmap': 'nfcmap',
 });
