@@ -57,6 +57,7 @@ var processSheets = function(url) {
             var nfcmap = db.collection('nfcmap');
             // remove all existing elements
             collection.remove({}, function(err, removed){});
+            //nfcmap.remove({}, function(err, removed){});
             console.log("REMOVED ALL");
             // run through the elements, only deal with updates, no deletions
             // entries are only valid if there is a title present
@@ -66,7 +67,7 @@ var processSheets = function(url) {
                     if (err) throw err;
                 });
                 // for the nfc we insert the rowNumber
-                nfcmap.update({rowNumber: row.rowNumber}, {rowNumber: row.rowNumber}, {upsert: true}, function(err, docs) {
+                nfcmap.update({rowNumber: row.rowNumber}, {$set: {rowNumber: row.rowNumber}}, {upsert: true}, function(err, docs) {
                     if (err) throw err;
                 });
             });

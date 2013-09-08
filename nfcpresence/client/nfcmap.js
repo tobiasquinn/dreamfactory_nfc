@@ -8,7 +8,6 @@ Template.nfcmap.nfcmapassigned = function() {
 
 Template.nfcmap.events = {
     'click .removeMapping': function(evt) {
-        console.log(evt.target.value);
         var id = NFCMAP.findOne({nfcid: evt.target.value})._id;
         NFCMAP.remove({_id: id});
     },
