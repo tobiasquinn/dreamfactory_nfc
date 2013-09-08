@@ -1,17 +1,21 @@
 <template name="nfcassign">
 <div class="container">
-<h1>Assign NFC to User</h1>
+    {{#if needsassigning}}
+    <h1>Assign NFC to User</h1>
 
-<h2>ID: {{nfcid}}</h2>
+    <h2>ID: {{needsassigning.nfcid}}</h2>
 
-<div class="row">
-<div class="col-md-6">
-<ul class="list-unstyled">
-{{#each unassignedUsers}}
-<li><button type="button" class="assignnfc btn btn-block" value="{{rowNumber}}">{{name}}</button></li>
-<br>
-{{/each}}
-</ul>
-</div>
-</div>
+    <div class="row">
+        <div class="col-md-6">
+            <ul class="list-unstyled">
+                {{#each unassignedUsers}}
+                <li><button type="button" class="assignnfc btn btn-block" value="{{rowNumber}}">{{name}}</button></li>
+                <br>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    {{else}}
+    <h1>No NFC id to be assigned, place tag on reader</h1>
+    {{/if}}
 </template>

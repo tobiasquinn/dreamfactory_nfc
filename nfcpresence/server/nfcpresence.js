@@ -3,7 +3,8 @@ MATRIX = new Meteor.Collection("matrix");
 NFCMAP = new Meteor.Collection('nfcmap');
 
 NFC.remove({});
-//NFCMAP.remove({});
+// remove all to be assigned on startup
+NFCMAP.remove({needsassigning: true});
 
 // allow client to remove all needassigning records from map
 Meteor.methods({

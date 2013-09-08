@@ -23,10 +23,9 @@ Template.nfcassign.unassignedUsers = function() {
     return info;
 }
 
-Template.nfcassign.nfcid = function() {
+Template.nfcassign.needsassigning = function() {
     var toassign = NFCMAP.findOne({needsassigning: true});
-    if (toassign !== undefined) return toassign.nfcid;
-    else return "Unknown";
+    return toassign;
 }
 
 Template.nfcassign.events = {
