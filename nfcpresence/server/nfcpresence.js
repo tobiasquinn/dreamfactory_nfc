@@ -9,7 +9,10 @@ NFCMAP.remove({needsassigning: true});
 // allow client to remove all needassigning records from map
 Meteor.methods({
     nfcremoveneedsassigning: function() {
-        NFCMAP.remove({needsassigning: true});
+        // only logged in users allowed
+        if (Meteor.user()) {
+            NFCMAP.remove({needsassigning: true});
+        }
     },
 });
 

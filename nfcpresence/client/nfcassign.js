@@ -2,7 +2,10 @@ NFCMAP = new Meteor.Collection('nfcmap');
 
 var nfcmapobserver = NFCMAP.find({needsassigning: true}).observe({
     added: function() {
-        Meteor.Router.to('/nfcassign');
+        // only redirect if logged in user
+        if (Meteor.user()) {
+            Meteor.Router.to('/nfcassign');
+        }
     },
     changed: function() {console.log("obs changed");}
 });

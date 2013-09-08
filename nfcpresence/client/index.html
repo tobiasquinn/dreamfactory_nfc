@@ -35,8 +35,10 @@
       <li><a href="/">Home</a></li>
       <li><a href="/nfcpresent">NFC Present</a></li>
       <li><a href="/matrix">Collaboration Matrix</a></li>
+      {{#if currentUser}}
       <li><a href="/nfcassign">NFC Assign</a></li>
       <li><a href="/nfcmap">NFC Map</a></li>
+      {{/if}}
       <li>{{loginButtons}}</li>
   </div>
     </ul>

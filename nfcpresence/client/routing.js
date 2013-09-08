@@ -13,6 +13,17 @@ Meteor.Router.add({
         Session.set('namedetail', name);
         return 'namedetail'
     },
-    '/nfcassign': 'nfcassign',
-    '/nfcmap': 'nfcmap',
+    '/nfcassign': function() {
+        if (Meteor.user())
+            return 'nfcassign';
+        else
+            return 'home';
+    },
+    '/nfcmap': function() {
+        if (Meteor.user())
+            return 'nfcmap';
+        else
+            return 'home';
+    },
+    '*': 'home',
 });
