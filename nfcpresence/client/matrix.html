@@ -1,6 +1,6 @@
 <template name="matrix">
 <h1>Presence Matrix</h1>
-<input type="text" class="form-control" placeholder="Filter by Name...">
+<input id="searchfilter" type="text" class="form-control" placeholder="Filter by Name...">
 <div class="table-responsive">
     <table class="table">
         <tr>
@@ -12,8 +12,8 @@
         </tr>
         {{#each entry}}
         <tr>
-            <td>{{name}}</td>
-            <td>{{socialprofile}}</td>
+            <td><a href="/matrix/name/{{name}}">{{name}}</a></td>
+            <td><a href="{{socialprofile}}">{{socialprofile}}</a></td>
             <td>{{currentoccupation}}</td>
             <td>{{needs}}</td>
             <td>{{canoffer}}</td>

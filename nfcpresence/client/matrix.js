@@ -6,5 +6,11 @@ Meteor.startup(function() {
 
 Template.matrix.entry = function() {
     console.log(Session.get('searchfilter'));
-    return MATRIX.find({}, {sort: {name: 1}});
+    return MATRIX.find({name: { $regex: Session.get('searchfilter'), $options: 'i'}}, {sort: {name: 1}});
+}
+
+Template.matrix.events = {
+    'keyup #searchfilter': function(evt) {
+        Session.set('searchfilter', evt.target.value);
+    },
 }
