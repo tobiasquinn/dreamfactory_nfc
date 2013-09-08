@@ -1,10 +1,22 @@
 <template name="nfcmap">
 <div class="container">
     <h4>NFCMAP</h4>
-    <ul class="list-unstyled">
-        {{#each nfcmap}}
-        <li>{{rowNumber}} : {{name}} : {{nfcid}}</li>
-        {{/each}}
-    </ul>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Row Number</th>
+                <th>Name</th>
+                <th>NFC ID</th>
+                <th>Action</th>
+            </tr>
+            {{#each nfcmapassigned}}
+            <tr>
+                <td>{{rowNumber}}</td>
+                <td>{{name}}</td>
+                <td>{{nfcid}}</td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
 </div>
 </template>
