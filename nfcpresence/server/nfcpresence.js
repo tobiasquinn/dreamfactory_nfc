@@ -38,7 +38,7 @@ Meteor.Router.add({
             NFCMAP.insert({nfcid: id, needsassigning: true});
         } else {
             if (NFC.find({nfcid: id}).count() === 0) {
-                NFC.insert({nfcid: id});
+                NFC.insert({nfcid: id, date: new Date()});
                 return "PRESENT";
             } else {
                 NFC.remove({nfcid: id});
