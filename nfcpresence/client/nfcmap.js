@@ -23,11 +23,9 @@ Template.nfcmap.events = {
         NFCMAP.remove({_id: id});
     },
     'click .forceCheckout': function(evt) {
-        console.log("Force checkout", evt.target.value);
         Meteor.call("forcecheckout", evt.target.value);
     },
     'click .forceCheckin': function(evt) {
-        console.log("Force checkin", evt.target.value);
         Meteor.call("forcecheckin", evt.target.value);
     }
 }
