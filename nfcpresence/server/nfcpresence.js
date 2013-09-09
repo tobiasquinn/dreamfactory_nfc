@@ -2,7 +2,7 @@ NFC = new Meteor.Collection("nfc");
 MATRIX = new Meteor.Collection("matrix");
 NFCMAP = new Meteor.Collection('nfcmap');
 
-NFC.remove({});
+//NFC.remove({});
 // remove all to be assigned on startup
 NFCMAP.remove({needsassigning: true});
 

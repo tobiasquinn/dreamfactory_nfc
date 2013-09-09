@@ -14,5 +14,9 @@ Template.nfcpresent.nfc_present = function () {
         var date = NFC.findOne({nfcid: nfcid}).date;
         record.date = date;
     });
+    // sort to place latest nfc entry at top of list
+    records.sort(function(a,b) {
+        return a.date < b.date;
+    });
     return records;
 };
