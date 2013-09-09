@@ -11,6 +11,9 @@ Template.nfcmap.nfcmapassigned = function() {
             row.date = moment(nfc.date).fromNow();
         }
     });
+    assigned.sort(function(a,b) {
+        a.name > b.name;
+    });
     return assigned;
 }
 
@@ -19,4 +22,12 @@ Template.nfcmap.events = {
         var id = NFCMAP.findOne({nfcid: evt.target.value})._id;
         NFCMAP.remove({_id: id});
     },
+    'click .forceCheckout': function(evt) {
+        console.log("Force checkout", evt.target.value);
+        Meteor.call("forcecheckout", evt.target.value);
+    },
+    'click .forceCheckin': function(evt) {
+        console.log("Force checkin", evt.target.value);
+        Meteor.call("forcecheckin", evt.target.value);
+    }
 }

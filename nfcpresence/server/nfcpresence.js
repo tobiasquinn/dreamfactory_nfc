@@ -13,6 +13,14 @@ NFCMAP.allow({
     },
 });
 
+var forceCheckIn = function(nfcid) {
+    NFC.insert({nfcid: nfcid, date: new Date()});
+}
+
+var forceCheckOut = function(nfcid) {
+    NFC.remove({nfcid: nfcid});
+}
+
 // allow client to remove all needassigning records from map
 Meteor.methods({
     nfcremoveneedsassigning: function() {
@@ -23,6 +31,12 @@ Meteor.methods({
     },
     mapnfcidtorow: function(rownumber, name, nfcid) {
         NFCMAP.update({rowNumber: rownumber}, {$set: {name: name, nfcid: nfcid}});
+    },
+    forcecheckin: function(nfcid) {
+        forceCheckIn(nfcid);
+    },
+    forcecheckout: function(nfcid) {
+        forceCheckOut(nfcid);
     },
 });
 
@@ -38,10 +52,10 @@ Meteor.Router.add({
             NFCMAP.insert({nfcid: id, needsassigning: true});
         } else {
             if (NFC.find({nfcid: id}).count() === 0) {
-                NFC.insert({nfcid: id, date: new Date()});
+                forceCheckIn(id);
                 return "PRESENT";
             } else {
-                NFC.remove({nfcid: id});
+                forceCheckOut(id);
                 return "ABSENT";
             }
         }
