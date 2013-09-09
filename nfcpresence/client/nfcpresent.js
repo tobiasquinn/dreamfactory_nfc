@@ -1,5 +1,9 @@
 NFC = new Meteor.Collection("nfc");
 
+Template.nfcpresentdetail.fromNow = function(date) {
+    return moment(date).fromNow();
+}
+
 Template.nfcpresent.nfc_present = function () {
     // return a list of MATRIX information objects for the NFC ids that are present
     var nfcids = _.map(NFC.find().fetch(), function(value) {

@@ -8,10 +8,9 @@ Template.nfcmap.nfcmapassigned = function() {
         var nfc = NFC.findOne({nfcid: row.nfcid});
         if (nfc) {
             row.present = true;
-            row.date = nfc.date;
+            row.date = moment(nfc.date).fromNow();
         }
     });
-    console.log(assigned);
     return assigned;
 }
 
