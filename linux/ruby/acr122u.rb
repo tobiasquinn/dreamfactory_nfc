@@ -11,7 +11,7 @@
 require 'smartcard'
 require 'net/http'
 
-meteor_root = 'http://localhost:3000'
+meteor_root = 'http://matrix.thedreamfactory.net'
 url_nfc_insert  = meteor_root + '/nfcinsert'
 url_nfc_removed = meteor_root + '/nfcremoved'
 
