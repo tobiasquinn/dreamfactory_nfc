@@ -19,8 +19,13 @@ Template.nfcmap.nfcmapassigned = function() {
 
 Template.nfcmap.events = {
     'click .removeMapping': function(evt) {
-        var id = NFCMAP.findOne({nfcid: evt.target.value})._id;
-        NFCMAP.remove({_id: id});
+        var map = NFCMAP.findOne({nfcid: evt.target.value});
+        console.log(evt.target.value);
+        console.log(map);
+        Session.set('nfcmapconfirmaction', "Remove mapping for " + map.name);
+        $('#MODAL_nfcmapconfirm').modal();
+        //var id = NFCMAP.findOne({nfcid: evt.target.value})._id;
+        //NFCMAP.remove({_id: id});
     },
     'click .forceCheckout': function(evt) {
         Meteor.call("forcecheckout", evt.target.value);
@@ -28,4 +33,8 @@ Template.nfcmap.events = {
     'click .forceCheckin': function(evt) {
         Meteor.call("forcecheckin", evt.target.value);
     }
+}
+
+Template.nfcmapconfirm.confirmaction = function() {
+    return Session.get('nfcmapconfirmaction');
 }
