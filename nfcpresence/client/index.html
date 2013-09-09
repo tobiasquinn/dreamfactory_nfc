@@ -15,11 +15,11 @@
 <template name="home">
 <div class="container">
         <h1>Welcome to the dreamfactory</h1>
-        <button type="button" class="btn btn-large btn-block"><a href="/nfcpresent">Which NFCs are Present</a></button>
-        <button type="button" class="btn btn-large btn-block"><a href="/matrix">Collaboration matrix</a></button>
+        <button type="button" class="homeRoute btn btn-lg btn-default btn-block" value="/nfcpresent">Which NFCs are Present</button>
+        <button type="button" class="homeRoute btn btn-lg btn-default btn-block" value="/matrix">Collaboration matrix</button>
         {{#if currentUser}}
-        <button type="button" class="btn btn-large btn-block"><a href="/nfcassign">NFC Assign</a></button>
-        <button type="button" class="btn btn-large btn-block"><a href="/nfcmap">NFC Map</a></button>
+        <button type="button" class="homeRoute btn btn-lg btn-default btn-block" value="/nfcassign">NFC Assign</button>
+        <button type="button" class="homeRoute btn btn-lg btn-default btn-block" value="/nfcmap">NFC Map</button>
         {{/if}}
 </div>
 </template>
