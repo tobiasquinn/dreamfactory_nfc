@@ -1,3 +1,9 @@
+// Accounts
+// - forbid account creation
+Accounts.config({
+  forbidClientAccountCreation: true,
+});
+
 NFC = new Meteor.Collection("nfc");
 MATRIX = new Meteor.Collection("matrix");
 NFCMAP = new Meteor.Collection('nfcmap');
