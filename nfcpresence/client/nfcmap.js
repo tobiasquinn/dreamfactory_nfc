@@ -3,7 +3,16 @@ Template.nfcmap.nfcmap = function() {
 }
 
 Template.nfcmap.nfcmapassigned = function() {
-    return NFCMAP.find({nfcid: {$ne: undefined}}).fetch();
+    var assigned = NFCMAP.find({nfcid: {$ne: undefined}}).fetch();
+    _.each(assigned, function(row) {
+        var nfc = NFC.findOne({nfcid: row.nfcid});
+        if (nfc) {
+            row.present = true;
+            row.date = nfc.date;
+        }
+    });
+    console.log(assigned);
+    return assigned;
 }
 
 Template.nfcmap.events = {

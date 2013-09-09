@@ -14,7 +14,12 @@
                 <td>{{rowNumber}}</td>
                 <td>{{name}}</td>
                 <td>{{nfcid}}</td>
-                <td><button type="button" class="removeMapping btn" value="{{nfcid}}">Remove Mapping</button></td>
+                <td>
+                    <button type="button" class="removeMapping btn " value="{{nfcid}}">Remove Mapping</button>
+                    {{#if present}}
+                    <button type="button" class="forceCheckout btn" value="{{nfcid}}">Force Checkout IN: {{date}}</button>
+                    {{/if}}
+                </td>
             </tr>
             {{/each}}
         </table>
