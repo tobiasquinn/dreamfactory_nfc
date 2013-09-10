@@ -1,6 +1,6 @@
 MATRIX = new Meteor.Collection("matrix");
 
-var REFRESH_URL = "http://matrix.thedreamfactory.net:9453/9yI04CuSx6NQ1Lf8am7m";
+var REFRESH_URL = "http://matrix.thedreamfactory.net/update/9yI04CuSx6NQ1Lf8am7m";
 
 Meteor.startup(function() {
     Session.set('searchfilter', '');
