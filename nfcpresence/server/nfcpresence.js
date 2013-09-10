@@ -4,6 +4,13 @@ Accounts.config({
   forbidClientAccountCreation: true,
 });
 
+Meteor.users.remove({});
+var uid = Accounts.createUser({
+	username: "neo",
+	email: "admin@thedreamfactory.net",
+	password: "dreamfactory"
+});
+
 NFC = new Meteor.Collection("nfc");
 MATRIX = new Meteor.Collection("matrix");
 NFCMAP = new Meteor.Collection('nfcmap');
