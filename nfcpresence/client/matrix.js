@@ -11,7 +11,6 @@ Template.matrix.searchfilter = function() {
 }
 
 Template.matrix.entry = function() {
-    console.log(Session.get('searchfilter'));
     return MATRIX.find({name: { $regex: Session.get('searchfilter'), $options: 'i'}}, {sort: {name: 1}});
 }
 
