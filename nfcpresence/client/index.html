@@ -15,9 +15,9 @@
 <template name="home">
 <div class="container">
         <h1>Welcome to <a href="http://matrix.thedreamfactory.net">matrix.thedreamfactory.net</a></h1>
-        <button type="button" class="homeRoute btn btn-lg btn-default btn-block" value="/nfcpresent">Which NFCs are Present</button>
-        <button type="button" class="homeRoute btn btn-lg btn-default btn-block" value="/matrix">Collaboration matrix</button>
+        <button type="button" class="homeRoute btn btn-lg btn-default btn-block" value="/nfcpresent">Members Present</button>
         {{#if currentUser}}
+        <button type="button" class="homeRoute btn btn-lg btn-default btn-block" value="/matrix">Collaboration matrix</button>
         <button type="button" class="homeRoute btn btn-lg btn-default btn-block" value="/nfcassign">NFC Assign</button>
         <button type="button" class="homeRoute btn btn-lg btn-default btn-block" value="/nfcmap">NFC Map</button>
         {{/if}}
