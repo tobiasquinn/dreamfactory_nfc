@@ -26,8 +26,8 @@ Template.matrix.events = {
         Session.set('searchfilter', undefined);
     },
     'click #refreshMatrix': function() {
+	Session.set('refreshResult', "Refreshing...");
         $.get(REFRESH_URL, function(result) {
-            console.log("REFRSH", result);
             Session.set('refreshResult', result);
         });
     },
