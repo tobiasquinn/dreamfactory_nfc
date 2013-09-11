@@ -5,9 +5,17 @@ Template.nav.rendered = function() {
     $('#navbar-nav li a[href="/' + page + '"]').parent().addClass('active');
 };
 
+Template.nav.iframed = function() {
+    if (Meteor.Router.page() == "iframe")
+        return true;
+    else
+        return false;
+}
+
 Meteor.Router.add({
     '/': 'home',
     '/nfcpresent': 'nfcpresent',
+    '/iframe': 'iframe',
     '/matrix': 'matrix',
     '/matrix/name/:name': function(name) {
         Session.set('namedetail', name);
