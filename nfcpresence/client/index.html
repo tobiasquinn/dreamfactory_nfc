@@ -7,10 +7,19 @@
 </head>
 
 <body>
+{{> banner}}
 {{> nav}}
 {{renderPage}}
 <!-- <h3>You are viewing {{currentPage}}</h3> -->
 </body>
+
+<template name="banner">
+<div class="row">
+    <div class="container">
+        <img class="img-responsive" src="img/dreamfactory-colour-header.jpg">
+    </div>
+</div>
+</template>
 
 <template name="home">
 <div class="container">
